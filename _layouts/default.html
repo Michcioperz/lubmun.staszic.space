@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}LubMUN 2016</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" href="/assets/favicon.gif">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:image" content="/assets/favicon.gif">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:determiner" content="">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:description" content="{{ site.description }}">
+    <meta name="description" content="{{ site.description }}">
   </head>
   <body>
     <header>
       <nav>
-        <a id="logoLink" href="/"><img id="logo" src="/assets/logo.png"></a>
+        <a id="logoLink" href="/"><img id="logo" alt="{{ site.title }} logo" src="/assets/logo.png"></a>
         <hr>
-        <ul{% if page.pullnavup %}{% else %} class="hidden"{% endif %}>
-          <li><a href="/about">About MUN</a></li>
-          <li><a href="/welcome-letter">Welcome Letter</a></li>
-          <li><a href="/secretariat">Secretariat</a></li>
-          <li><a href="/committees">Committees</a></li>
-          <li><a href="/for-delegates">For Delegates</a></li>
-          <li><a href="/partners">Partners</a></li>
-          <li><a href="/contact">Contact</a></li>
+        <ul id="socialBar" class="inline">
+          <li><a rel="me" href="https://facebook.com/lublinmun"><img alt="Facebook" src="/assets/facebook.png"></a></li>
+          <li><a rel="me" href="https://twitter.com/lubMUN"><img alt="Twitter" src="/assets/twitter.png"></a></li>
+          <li><a rel="me" href="mailto:lubmun2016@gmail.com"><img alt="Email" src="/assets/email.png"></a></li>
+        </ul>
+        <ul id="toponepercentoftoponepercent"{% if page.pullnavup %}{% else %} class="hidden"{% endif %}>
+          {% include links.html %}
         </ul>
         <script>
           document.addEventListener("DOMContentLoaded", function() {
-            var navUl = document.querySelector("nav ul")
+            var navUl = document.getElementById("toponepercentoftoponepercent")
             document.getElementById("logoLink").addEventListener("click", function(e) {
               if (navUl.classList.contains("hidden")) {
                 e.preventDefault()
@@ -37,5 +47,13 @@
       {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
         {{ content }}
     </main>
+    <footer>
+      <ul class="inline">
+        {% include links.html %}
+      </ul>
+      <small>Copyright by &copy; {{ site.title }}.</small>
+      <small><a href="http://glyphicons.com">Glyphicons by Jan Kovarik</a> used under <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution3.0</a> license.</small>
+      <small>Powered by <a href="http://jekyllrb.com">Jekyll</a></small>
+    </footer>
   </body>
 </html>

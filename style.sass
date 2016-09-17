@@ -18,8 +18,6 @@ body
   background: url('/assets/pattern.png')
   font-family: $magical-font
   text-align: center
-  padding: 0
-  margin: 0
 nav
   width: 80%
   max-width: 800px
@@ -35,22 +33,16 @@ nav
     border: 0
   ul
     @include allplatforms('transition', (font-size 0.5s))
-    height: 100%
     font-size: 2rem
     &.hidden
       font-size: 0rem
-    list-style-type: none
+      li
+        margin: 0
     li
-      margin: 0.5rem
       display: block
-      width: auto
-      a
-        color: $un-blue
-        text-decoration: none
-        text-shadow: 0 0 2rem $un-blue
-      @include allplatforms("transition", (transform 0.5s))
+      @include allplatforms("transition", (transform 0.5s, text-shadow 0.5s))
       &:hover
-        text-shadow: 0 0 0.05rem darkslategray, 0 0 1rem $un-blue
+        text-shadow: 0.2rem 0.2rem 0.5rem darkslategray, 0 0 1rem $un-blue
         @include allplatforms("transform", scale(1.1))
 
 main
@@ -61,5 +53,24 @@ main
   text-align: justify
   text-indent: 3rem
 
+ul
+  list-style-type: none
+  li
+    margin: 0.5rem
+    a
+      color: $un-blue
+      text-decoration: none
+      text-shadow: 0 0 2rem $un-blue
+
+ul.inline
+  li
+    display: inline-block
+
+#socialBar
+  margin: 0.25rem
+
 footer
-  color: lightslategray
+  small
+    color: lightslategray
+    a
+      color: lightslategray
