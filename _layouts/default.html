@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}LubMUN 2016</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a id="logoLink" href="/"><img id="logo" src="/assets/logo.png"></a>
+        <hr>
+        <ul{% if page.pullnavup %}{% else %} class="hidden"{% endif %}>
+          <li><a href="/about">About MUN</a></li>
+          <li><a href="/welcome-letter">Welcome Letter</a></li>
+          <li><a href="/secretariat">Secretariat</a></li>
+          <li><a href="/committees">Committees</a></li>
+          <li><a href="/for-delegates">For Delegates</a></li>
+          <li><a href="/partners">Partners</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            var navUl = document.querySelector("nav ul")
+            document.getElementById("logoLink").addEventListener("click", function(e) {
+              if (navUl.classList.contains("hidden")) {
+                e.preventDefault()
+                navUl.classList.remove("hidden")
+              }
+            })
+          })
+        </script>
+      </nav>
+    </header>
+    <main>
+      {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+        {{ content }}
+    </main>
+    <footer>
+      <div class="right">
+        Copyright by &copy; LubMUN
+      </div>
+    </footer>
+  </body>
+</html>

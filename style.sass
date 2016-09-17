@@ -1,0 +1,65 @@
+---
+---
+@font-face
+  font-family: 'Rounded Elegance'
+  src: url('re.woff2') format('woff2'), url('re.woff') format('woff'), url('/assets/re.ttf') format('truetype')
+
+$un-blue: #4B92DB
+$magical-font: 'Rounded Elegance', 'Helvetica Neue', 'Lato', 'Roboto', 'Helvetica', sans-serif
+ 
+@mixin allplatforms($keyword, $params)
+  -webkit-#{$keyword}: $params
+  -moz-#{$keyword}: $params
+  -ms-#{$keyword}: $params
+  -o-#{$keyword}: $params
+  #{$keyword}: $params
+
+body
+  background: url('/assets/pattern.png')
+  font-family: $magical-font
+  text-align: center
+  padding: 0
+  margin: 0
+nav
+  width: 80%
+  max-width: 800px
+  margin: 0 auto
+  color: $un-blue
+  img#logo, hr
+    width: 80%
+    max-width: 500px
+  hr
+    color: $un-blue
+    background-color: $un-blue
+    height: 0.5rem
+    border: 0
+  ul
+    @include allplatforms('transition', (font-size 0.5s))
+    height: 100%
+    font-size: 2rem
+    &.hidden
+      font-size: 0rem
+    list-style-type: none
+    li
+      margin: 0.5rem
+      display: block
+      width: auto
+      a
+        color: $un-blue
+        text-decoration: none
+        text-shadow: 0 0 2rem $un-blue
+      @include allplatforms("transition", (transform 0.5s))
+      &:hover
+        text-shadow: 0 0 0.05rem darkslategray, 0 0 1rem $un-blue
+        @include allplatforms("transform", scale(1.1))
+
+main
+  width: 90%
+  max-width: 1000px
+  font-size: 1.25rem
+  margin: auto
+  text-align: justify
+  text-indent: 3rem
+
+footer
+  color: lightslategray
