@@ -2,4 +2,6 @@
 layout: default
 title: Committees
 ---
-Coming soon!
+<ul>
+  {% include komitety.html %}
+</ul>

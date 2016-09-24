@@ -5,7 +5,8 @@
   src: url('/assets/re.woff2') format('woff2'), url('/assets/re.woff') format('woff'), url('/assets/re.ttf') format('truetype')
 
 $un-blue: #5B92E5
-$magical-font: 'Rounded Elegance', 'Helvetica Neue', 'Lato', 'Roboto', 'Helvetica', sans-serif
+$submagical-font: 'Helvetica Neue', 'Raleway', 'Lato', 'Roboto', 'Helvetica', sans-serif
+$magical-font: 'Rounded Elegance', $submagical-font
  
 @mixin allplatforms($keyword, $params)
   -webkit-#{$keyword}: $params
@@ -46,12 +47,33 @@ nav
         @include allplatforms("transform", scale(1.1))
 
 main
+  h1
+    font-family: $magical-font
+  font-family: $submagical-font
   width: 90%
   max-width: 1000px
   font-size: 1.25rem
   margin: auto
   text-align: justify
   text-indent: 3rem
+
+div.committee-wrapper
+  width: 100%
+
+@media (min-width: 1081px)
+  div.committee-menu
+    width: 298px
+    float: left
+    border-right: 2px $un-blue solid
+    ul, li
+      list-style: none inside
+      padding-left: 0
+      margin-left: 0
+      font-size: 1rem
+  div.committee-content
+    padding: 5px
+    width: calc(100% - 310px)
+    float: right
 
 ul
   list-style-type: none
@@ -70,6 +92,7 @@ ul.inline
   margin: 0.25rem
 
 footer
+  clear: both
   small
     color: lightslategray
     a
